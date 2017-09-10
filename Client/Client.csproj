@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateSystem\TemplateLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bridge.json" />
@@ -69,6 +70,13 @@
     <PostBuildEvent>xcopy "$(ProjectDir)bin\Debug\bridge\Client.js" "$(SolutionDir)Web\Scripts"
 xcopy "$(ProjectDir)bin\Debug\bridge\Client.min.js" "$(SolutionDir)Web\Scripts"
 xcopy "$(ProjectDir)bin\Debug\bridge\Client.meta.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\Client.meta.min.js" "$(SolutionDir)Web\Scripts"</PostBuildEvent>
+xcopy "$(ProjectDir)bin\Debug\bridge\Client.meta.min.js" "$(SolutionDir)Web\Scripts"
+xcopy "$(ProjectDir)bin\Debug\bridge\bridge.js" "$(SolutionDir)Web\Scripts"
+xcopy "$(ProjectDir)bin\Debug\bridge\bridge.min.js" "$(SolutionDir)Web\Scripts"
+xcopy "$(ProjectDir)bin\Debug\bridge\bridge.console.js" "$(SolutionDir)Web\Scripts"
+xcopy "$(ProjectDir)bin\Debug\bridge\bridge.console.min.js" "$(SolutionDir)Web\Scripts"
+xcopy "$(ProjectDir)bin\Debug\bridge\bridge.meta.js" "$(SolutionDir)Web\Scripts"
+xcopy "$(ProjectDir)bin\Debug\bridge\bridge.meta.min.js" "$(SolutionDir)Web\Scripts"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
