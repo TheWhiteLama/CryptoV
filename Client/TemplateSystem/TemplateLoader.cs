@@ -7,55 +7,33 @@ using Bridge.jQuery2;
 
 namespace Client.TemplateSystem
 {
-    public class TemplateLoader
+    public static class TemplateLoader
     {
-        public TemplateLoader()
+
+        /// <summary>
+        /// Example : TemplateLoader.Load(jQuery.Select("#alert-container"), "/Templates/Bootstrap/Alert.html");
+        /// Generate the following trigger "TEMPLATE_LOADED".
+        /// </summary>
+        /// <param name="target">The jQuery object where to append the content returned from the template</param>
+        /// <param name="path">The path to the template</param>
+        public static void Load(this jQuery target, string path)
         {
+
+            jQuery.Get(path)
+                .Done((dynamic data, string str, jqXHR jqxhr) => { Success((string)data, str, jqxhr, target); })
+                .Fail((jqXHR jqxhr, string str1, string str2) => { Fail(jqxhr, str1, str2, target); });
+
+            target.Trigger("TEMPLATE_LOADED");
         }
 
-        //public void Load(jQuery elementToAppend, string urlFileToLoad)
-        //{
+        private static void Success(string data, string str, jqXHR jqxhr, jQuery target)
+        {
+            target.Append(data);
+        }
 
-        //    //jQuery.Ajax(urlFileToLoad).Fail(FileTemplateFailed).Done(FileTemplateLoaded);
-        //    //jQuery.Get(urlFileToLoad)
-        //    //    .Done((dynamic data, string str, jqXHR jqxhr) => { FileTemplateLoaded(data, str, jqxhr, elementToAppend); })
-        //    //    .Fail(FileTemplateFailed);
-
-        //    ////Creates a gloabl object called templateLoader with a single method "loadExtTemplate"
-        //    //var templateLoader = (function($, host) {
-        //    //    //Loads external templates from path and injects in to page DOM
-        //    //    return {
-        //    //        //Method: loadExtTemplate
-        //    //        //Params: (string) path: the relative path to a file that contains template definition(s)
-        //    //        loadExtTemplate: function(path) {
-        //    //            //Use jQuery Ajax to fetch the template file
-        //    //            var tmplLoader = $.get(path)
-        //    //                .success(function(result) {
-        //    //                //On success, Add templates to DOM (assumes file only has template definitions)
-        //    //                $("body").append(result);
-        //    //            })
-        //    //            .error(function(result) {
-        //    //                alert("Error Loading Templates -- TODO: Better Error Handling");
-        //    //            })
-
-        //    //        tmplLoader.complete(function() {
-        //    //            //Publish an event that indicates when a template is done loading
-        //    //            $(host).trigger("TEMPLATE_LOADED", [path]);
-        //    //            });
-        //    //        }
-        //    //    };
-        //    //})(jQuery, document);
-
-
-        //}
-
-        //public void FileTemplateLoaded(dynamic data, string str, jqXHR jqxhr, jQuery elementToAppend)
-        //{
-        //    elementToAppend.Append(data);
-        //}
-
-        //public void FileTemplateFailed(jqXHR jqxhr, string str1, string str2)
-        //{
-        //}
+        private static void Fail(jqXHR jqxhr, string str1, string str2, jQuery target)
+        {
+            target.Append("<b style='color:red;'>Failed to load template !</b>");
+        }
     }
 }

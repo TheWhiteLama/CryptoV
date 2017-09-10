@@ -67,16 +67,16 @@
     <Error Condition="!Exists('..\packages\Bridge.Min.16.2.0\build\Bridge.Min.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Bridge.Min.16.2.0\build\Bridge.Min.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)bin\Debug\bridge\Client.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\Client.min.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\Client.meta.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\Client.meta.min.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\bridge.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\bridge.min.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\bridge.console.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\bridge.console.min.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\bridge.meta.js" "$(SolutionDir)Web\Scripts"
-xcopy "$(ProjectDir)bin\Debug\bridge\bridge.meta.min.js" "$(SolutionDir)Web\Scripts"
+    <PostBuildEvent>copy "$(ProjectDir)bin\Debug\bridge\Client.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\Client.min.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\Client.meta.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\Client.meta.min.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\bridge.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\bridge.min.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\bridge.console.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\bridge.console.min.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\bridge.meta.js" "$(SolutionDir)Web\Scripts"
+copy "$(ProjectDir)bin\Debug\bridge\bridge.meta.min.js" "$(SolutionDir)Web\Scripts"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>

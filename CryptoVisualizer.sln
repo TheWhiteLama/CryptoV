@@ -24,6 +24,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{2CDC9777-44
 		SlnRelativePath = "Web\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{953A4CDE-41FF-425E-9D30-921D2913A780} = {953A4CDE-41FF-425E-9D30-921D2913A780}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{953A4CDE-41FF-425E-9D30-921D2913A780}"
 EndProject
