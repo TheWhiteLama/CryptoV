@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bridge.jQuery2;
+﻿using Bridge.jQuery2;
 
 namespace Client.TemplateSystem
 {
