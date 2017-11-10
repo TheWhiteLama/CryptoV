@@ -2,7 +2,7 @@
  * @version 1.0.0.0
  * @author Microsoft
  * @copyright Copyright © Microsoft 2017
- * @compiler Bridge.NET 16.3.0
+ * @compiler Bridge.NET 16.2.0
  */
 Bridge.assembly("Client", function ($asm, globals) {
     "use strict";
