@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Text;
 using Dapper;
+using Server.App.Config;
 
 namespace Server.App.DAL
 {
@@ -12,8 +13,11 @@ namespace Server.App.DAL
     {
         private static SQLiteConnection _dbConnection;
 
-        public DataAccessLayer(string dbFilePath, string connectionString)
+        public DataAccessLayer()
         {
+            string dbFilePath = GlobalConfiguration.Get("Data.DB.DbFilePath", "./TestDb.sqlite");
+            string connectionString = GlobalConfiguration.Get("Data.DB.ConnectionString", "Data Source='./TestDb.sqlite';Version=3;");
+
             if (!File.Exists(dbFilePath))
             {
                 SQLiteConnection.CreateFile(dbFilePath);

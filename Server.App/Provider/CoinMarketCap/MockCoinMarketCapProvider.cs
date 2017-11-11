@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace Server.App.Provider.CoinMarketCap
 {
     public class MockCoinMarketCapProvider : ICoinMarketCapProvider
     {
+        private readonly ILogger _logger;
+
+        public MockCoinMarketCapProvider(ILogger<MockCoinMarketCapProvider> logger)
+        {
+            _logger = logger;
+        }
+
         public Task<BlockchainDTO[]> GetBlockChainDTOAsync(int from, int limit)
         {
+            _logger.LogDebug("GetBlockChainDTOAsync (from: [{0}]); (limit: [{1}])", from, limit);
             #region data
             string json = @"[
     {

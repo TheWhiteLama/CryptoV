@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Server.App.Provider.CoinMarketCap;
 
@@ -20,7 +21,9 @@ namespace Server.App.Test.Provider.CoinMarketCap
             client.BaseAddress = new Uri("https://api.coinmarketcap.com");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var provider = new CoinMarketCapProvider(client);
+            ILoggerFactory loggerFactory = new LoggerFactory();
+            ILogger<CoinMarketCapProvider> logger = loggerFactory.CreateLogger<CoinMarketCapProvider>();
+            var provider = new CoinMarketCapProvider(logger, client);
 
             // Act
             var result = provider.GetBlockChainDTOAsync(0, 10);
@@ -33,7 +36,9 @@ namespace Server.App.Test.Provider.CoinMarketCap
         public void Validate_Mock_GetBlockChainDTOAsync()
         {
             // Arrange
-            var provider = new MockCoinMarketCapProvider();
+            ILoggerFactory loggerFactory = new LoggerFactory();
+            ILogger<MockCoinMarketCapProvider> logger = loggerFactory.CreateLogger<MockCoinMarketCapProvider>();
+            var provider = new MockCoinMarketCapProvider(logger);
 
             // Act
             var result = provider.GetBlockChainDTOAsync(0, 10);
